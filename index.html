@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Conteo Vans Gyaa</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Barlow:wght@400;500;600&display=swap">
 <style>
@@ -9,45 +14,45 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--fondo);color:var(--texto);font-family:"Barlow",-apple-system,sans-serif;
-     font-size:16px;line-height:1.45;padding-bottom:118px}
+     font-size:17px;line-height:1.5;padding-bottom:126px}
 h1,.van-btn,.sec-titulo{font-family:"Archivo","Barlow",sans-serif}
 header{position:sticky;top:0;z-index:20;background:var(--fondo);border-bottom:1px solid var(--linea);
        padding:14px 14px 12px}
-h1{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:2.5px}
+h1{font-size:17px;font-weight:800;text-transform:uppercase;letter-spacing:2.5px}
 h1 .rojo{color:var(--rojo)}
-.sub{color:var(--apagado);font-size:12.5px;margin-top:2px}
+.sub{color:var(--apagado);font-size:14px;margin-top:2px}
 .vans{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.van-btn{padding:13px 8px;border-radius:10px;border:2px solid var(--linea);background:var(--panel);
-  color:var(--apagado);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;
+.van-btn{padding:16px 8px;border-radius:10px;border:2px solid var(--linea);background:var(--panel);
+  color:var(--apagado);font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;
   cursor:pointer;text-align:center;transition:.12s}
-.van-btn small{display:block;font-family:"Barlow";font-weight:500;font-size:11.5px;letter-spacing:.4px;
+.van-btn small{display:block;font-family:"Barlow";font-weight:500;font-size:13px;letter-spacing:.4px;
   text-transform:none;margin-top:3px;color:inherit;opacity:.85}
 .van-btn.activa-v1{border-color:var(--rojo);color:#fff;background:linear-gradient(180deg,#2a1013,#1a0c0e)}
 .van-btn.activa-v2{border-color:var(--ambar);color:#fff;background:linear-gradient(180deg,#241a0c,#171106)}
 .filtros{display:flex;gap:8px;margin-top:12px}
-input[type=search],select{width:100%;padding:11px 12px;border-radius:9px;border:1px solid var(--linea);
-  background:var(--panel);color:var(--texto);font-family:inherit;font-size:15px;appearance:none}
+input[type=search],select{width:100%;padding:13px 12px;border-radius:9px;border:1px solid var(--linea);
+  background:var(--panel);color:var(--texto);font-family:inherit;font-size:16px;appearance:none}
 input[type=search]::placeholder{color:var(--apagado)}
 input:focus,select:focus,button:focus-visible{outline:2px solid var(--rojo);outline-offset:1px}
 select{max-width:46%}
 main{padding:10px 14px}
 .aviso{background:var(--panel);border:1px solid var(--linea);border-left:3px solid var(--ambar);
   border-radius:0 9px 9px 0;padding:10px 12px;font-size:13.5px;color:var(--apagado);margin:8px 0}
-.sec-titulo{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;
+.sec-titulo{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;
   color:var(--apagado);margin:16px 0 8px}
 .fila{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--linea);
   border-radius:10px;padding:10px 12px;margin-bottom:8px}
 .fila.contada{border-color:#2c4633;background:#121914}
 .info{flex:1;min-width:0}
-.nombre{font-weight:600;font-size:14.5px;line-height:1.25}
-.detalle{color:var(--apagado);font-size:12.5px;margin-top:2px}
+.nombre{font-weight:600;font-size:16px;line-height:1.25}
+.detalle{color:var(--apagado);font-size:13.5px;margin-top:2px}
 .stepper{display:flex;align-items:center;gap:2px;flex-shrink:0}
-.stepper button{width:42px;height:42px;border-radius:9px;border:1px solid var(--linea);
-  background:var(--panel2);color:var(--texto);font-size:22px;font-weight:600;cursor:pointer;line-height:1}
+.stepper button{width:48px;height:48px;border-radius:9px;border:1px solid var(--linea);
+  background:var(--panel2);color:var(--texto);font-size:24px;font-weight:600;cursor:pointer;line-height:1}
 .stepper button:active{background:var(--linea)}
-.stepper .btn-n{width:46px;font-size:13.5px;font-weight:700;color:var(--ambar);letter-spacing:.5px}
-.stepper input{width:54px;height:42px;text-align:center;border:1px solid var(--linea);border-radius:9px;
-  background:var(--fondo);color:var(--texto);font-size:17px;font-weight:600;margin:0 4px;
+.stepper .btn-n{width:50px;font-size:15px;font-weight:700;color:var(--ambar);letter-spacing:.5px}
+.stepper input{width:60px;height:48px;text-align:center;border:1px solid var(--linea);border-radius:9px;
+  background:var(--fondo);color:var(--texto);font-size:19px;font-weight:600;margin:0 4px;
   font-variant-numeric:tabular-nums}
 .stepper input.conteo-pos{border-color:var(--ok);color:var(--ok)}
 .mas{width:100%;padding:12px;border-radius:9px;border:1px dashed var(--linea);background:none;
@@ -55,19 +60,24 @@ main{padding:10px 14px}
 .vacio{color:var(--apagado);text-align:center;padding:34px 10px;font-size:14.5px}
 footer{position:fixed;bottom:0;left:0;right:0;z-index:30;background:var(--panel);
   border-top:1px solid var(--linea);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
-.resumen{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:13px;color:var(--apagado)}
+.resumen{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px;font-size:14px;color:var(--apagado)}
 .resumen b{color:var(--texto);font-variant-numeric:tabular-nums}
 #estadoGuardado{font-size:12px}
 #estadoGuardado.pendiente{color:var(--ambar)}
 #estadoGuardado.ok{color:var(--ok)}
 .acciones{display:flex;gap:10px}
-#btnGuardar{flex:1;padding:14px;border-radius:10px;border:0;background:var(--rojo);color:#fff;
-  font-family:"Archivo";font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer}
+#btnGuardar{flex:1;padding:16px;border-radius:10px;border:0;background:var(--rojo);color:#fff;
+  font-family:"Archivo";font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer}
 #btnGuardar[disabled]{opacity:.45}
-#btnCopiar{padding:14px 16px;border-radius:10px;border:1px solid var(--linea);background:var(--panel2);
+#btnCopiar{padding:16px 18px;border-radius:10px;border:1px solid var(--linea);background:var(--panel2);
   color:var(--texto);font-family:inherit;font-size:14px;cursor:pointer}
+@media (min-width:720px){
+  header>*,main,footer>*{max-width:720px;margin-left:auto;margin-right:auto}
+}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
+</head>
+<body>
 
 <header>
   <h1>Conteo de vans <span class="rojo">· Gyaa Tattoo Supply</span></h1>
@@ -266,3 +276,5 @@ function copiarResumen(){
 cambiarVan('v1');
 if(window.claude && window.claude.use){ claude.use('artifact').then(function(ns){ artifactNS=ns; if(!ns) modoLocal=true; }); } else { modoLocal=true; }
 </script>
+</body>
+</html>
