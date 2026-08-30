@@ -112,11 +112,23 @@ var CAT=JSON.parse(document.getElementById('catalogo').textContent);
 var EST=JSON.parse(document.getElementById('estado').textContent);
 var van='v1', limite=120, pendiente=false, artifactNS=null, modoLocal=false;
 
-// fallback local si no se puede publicar
+// ediciones locales de ESTE telefono: solo lo que esta persona toco, por producto y por van
+var EDI={v1:{},v2:{}};
 try{
-  var loc=localStorage.getItem('gyaa-vans-borrador');
-  if(loc){var l=JSON.parse(loc);
-    if(l && l.t && (!EST.meta.actualizado || l.t>EST.meta.actualizado)){EST.v1=l.v1||EST.v1;EST.v2=l.v2||EST.v2;pendiente=true;}}
+  localStorage.removeItem('gyaa-vans-borrador'); // formato viejo que cruzaba datos: fuera
+  var loc=localStorage.getItem('gyaa-vans-ediciones');
+  if(loc){EDI=JSON.parse(loc)||EDI;}
+  ['v1','v2'].forEach(function(v){
+    EDI[v]=EDI[v]||{};
+    for(var k in EDI[v]){
+      var val=EDI[v][k];
+      var base=(EST[v]||{})[k];
+      if(val==='__borrar__'){ if(base==null){ delete EDI[v][k]; } else { delete EST[v][k]; pendiente=true; } }
+      else if(base===val){ delete EDI[v][k]; }           // ya sincronizado: la edicion sobra
+      else { EST[v][k]=val; pendiente=true; }            // aplicar MI cambio encima, solo esa clave
+    }
+  });
+  localStorage.setItem('gyaa-vans-ediciones',JSON.stringify(EDI));
 }catch(e){}
 
 var norm=function(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');};
@@ -179,7 +191,8 @@ function fila(it){
   var mas=document.createElement('button');mas.textContent='+';mas.setAttribute('aria-label','Sumar uno');
   var masN=document.createElement('button');masN.textContent='+N';masN.className='btn-n';masN.setAttribute('aria-label','Sumar varias');
   function poner(v){
-    if(v===''||v==null){delete d[it.k];} else {v=Math.max(0,parseInt(v,10)||0); d[it.k]=v;}
+    if(v===''||v==null){delete d[it.k]; EDI[van][it.k]='__borrar__';}
+    else {v=Math.max(0,parseInt(v,10)||0); d[it.k]=v; EDI[van][it.k]=v;}
     marcarPendiente(); val=d[it.k];
     inp.value=(val!=null?val:''); inp.className=(val>0?'conteo-pos':'');
     div.className='fila'+(val!=null?' contada':''); pintarResumen();
@@ -219,7 +232,7 @@ function pintarResumen(){
 }
 function marcarPendiente(){
   pendiente=true;
-  try{localStorage.setItem('gyaa-vans-borrador',JSON.stringify({v1:EST.v1,v2:EST.v2,t:Date.now()}));}catch(e){}
+  try{localStorage.setItem('gyaa-vans-ediciones',JSON.stringify(EDI));}catch(e){}
   pintarResumen();
 }
 function cambiarVan(v){
@@ -247,7 +260,8 @@ async function guardar(){
     if(!modoLocal){
       await artifactNS.publish(construirHTML());
       pendiente=false;
-      try{localStorage.removeItem('gyaa-vans-borrador');}catch(e){}
+      EDI={v1:{},v2:{}};
+      try{localStorage.setItem('gyaa-vans-ediciones',JSON.stringify(EDI));}catch(e){}
     } else {
       marcarPendiente();
       alert('En este acceso el conteo se guarda solo en este teléfono. Cuando termines, dale a "Copiar" y manda el resumen por WhatsApp.');
